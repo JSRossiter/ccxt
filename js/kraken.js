@@ -1011,6 +1011,7 @@ module.exports = class kraken extends Exchange {
         if (code === undefined) {
             throw new ArgumentsRequired (this.id + ' fetchDeposits requires a currency code argument');
         }
+        await this.loadMarkets ();
         const currency = this.currency (code);
         const request = {
             'asset': currency['id'],
@@ -1037,6 +1038,7 @@ module.exports = class kraken extends Exchange {
         if (code === undefined) {
             throw new ArgumentsRequired (this.id + ' fetchWithdrawals requires a currency code argument');
         }
+        await this.loadMarkets ();
         const currency = this.currency (code);
         const request = {
             'asset': currency['id'],
